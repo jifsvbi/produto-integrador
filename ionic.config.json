@@ -1,5 +1,16 @@
 {
   "name": "produto-integrador",
-  "integrations": {},
-  "type": "angular"
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular",
+  "server": {
+    "proxy" : {
+     "/api" : {
+      "target" : "https://esp32-mongodb-idev3.onrender.com",
+      "changeOrigin": true,
+      "secure": false
+    }
+    }
+  }
 }
