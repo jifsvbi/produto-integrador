@@ -1,13 +1,61 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>dashboard</ion-title>
+  <ion-toolbar color="primary">
+    <ion-title>Dashboard</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<ion-content [fullscreen]="true" class="ion-padding">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">dashboard</ion-title>
+      <ion-title size="large">Dashboard</ion-title>
     </ion-toolbar>
   </ion-header>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Filtrar por Data</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item>
+        <ion-label position="stacked">Selecione a data</ion-label>
+        <ion-datetime
+          presentation="date"
+          [(ngModel)]="dataSelecionada"
+          (ionChange)="filtrarPorData()">
+        </ion-datetime>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Temperatura</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <canvas id="tempChart"></canvas>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Umidade</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <canvas id="umidChart"></canvas>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Dados Brutos</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <div *ngFor="let i of dados">
+        <p>🌡️ Temperatura: {{ i['temperatura'] }}</p>
+        <p>💧 Umidade: {{ i['umidade'] }}</p>
+        <p>🕒 Timestamp: {{ i['timestamp'] }}</p>
+        <hr />
+      </div>
+    </ion-card-content>
+  </ion-card>
 </ion-content>
