@@ -5,28 +5,24 @@
 </ion-header>
 
 <ion-content [fullscreen]="true" class="ion-padding">
+
   <ion-header collapse="condense">
     <ion-toolbar>
       <ion-title size="large">Dashboard</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <ion-card>
-    <ion-card-header>
-      <ion-card-title>Filtrar por Data</ion-card-title>
-    </ion-card-header>
-    <ion-card-content>
-      <ion-item>
-        <ion-label position="stacked">Selecione a data</ion-label>
-        <ion-datetime
-          presentation="date"
-          [(ngModel)]="dataSelecionada"
-          (ionChange)="filtrarPorData()">
-        </ion-datetime>
-      </ion-item>
-    </ion-card-content>
-  </ion-card>
+  <!-- 📅 Seleção de Data -->
+  <ion-item>
+    <ion-label position="floating">Selecione uma Data</ion-label>
+    <ion-datetime
+      display-format="YYYY-MM-DD"
+      [(ngModel)]="dataSelecionada"
+      (ionChange)="filtrarPorData()">
+    </ion-datetime>
+  </ion-item>
 
+  <!-- 🌡️ Gráfico de Temperatura -->
   <ion-card>
     <ion-card-header>
       <ion-card-title>Temperatura</ion-card-title>
@@ -36,6 +32,7 @@
     </ion-card-content>
   </ion-card>
 
+  <!-- 💧 Gráfico de Umidade -->
   <ion-card>
     <ion-card-header>
       <ion-card-title>Umidade</ion-card-title>
@@ -45,11 +42,20 @@
     </ion-card-content>
   </ion-card>
 
+  <!-- 🔎 Dados Brutos -->
   <ion-card>
     <ion-card-header>
       <ion-card-title>Dados Brutos</ion-card-title>
     </ion-card-header>
     <ion-card-content>
+      <!-- ❌ Aviso se não houver dados -->
+      <div *ngIf="dados.length === 0">
+        <p style="text-align:center; color:#999; font-style:italic;">
+          Nenhum dado encontrado para essa data 📭
+        </p>
+      </div>
+
+      <!-- ✅ Lista de dados se houver -->
       <div *ngFor="let i of dados">
         <p>🌡️ Temperatura: {{ i['temperatura'] }}</p>
         <p>💧 Umidade: {{ i['umidade'] }}</p>
@@ -58,4 +64,5 @@
       </div>
     </ion-card-content>
   </ion-card>
+
 </ion-content>
