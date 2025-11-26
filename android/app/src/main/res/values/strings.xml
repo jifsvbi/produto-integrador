@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">produto-integrador</string>
+    <string name="title_activity_main">produto-integrador</string>
+    <string name="package_name">com.pedro.app</string>
+    <string name="custom_url_scheme">com.pedro.app</string>
+</resources>
